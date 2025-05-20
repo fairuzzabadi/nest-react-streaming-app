@@ -7,7 +7,7 @@ COPY . .
 RUN cp docker.env backend/
 
 # Build frontend
-ADD docker.env frontend/.env
+ADD docker.env frontend/
 RUN cd frontend && \
   yarn && \
   yarn build
