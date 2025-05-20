@@ -1,0 +1,85 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup env variables
+        run: |
+          echo "VITE_API_ENDPOINT=http://${{ vars.HOST }}/api" >> docker.env
+          echo "POSTGRES_USER=${{ vars.POSTGRES_USER }}" >> docker.env
+          echo "POSTGRES_PASSWORD=${{ vars.POSTGRES_PASSWORD }}" >> docker.env
+          echo "POSTGRES_DB=${{ vars.POSTGRES_DB }}" >> docker.env
+          echo "DATABASE_URL=postgresql://${{ vars.POSTGRES_USER }}:${{ vars.POSTGRES_PASSWORD }}@postgres:5432/${{ vars.POSTGRES_DB }}?schema=public&pool_timeout=0" >> docker.env
+          echo "ACCESS_SECRET=${{ vars.ACCESS_SECRET }}" >> docker.env
+          echo "REFRESH_SECRET=${{ vars.REFRESH_SECRET }}" >> docker.env
+          echo "PORT=${{ vars.PORT }}" >> docker.env
+          echo "MAILER_HOST=${{ secrets.MAILER_HOST }}" >> docker.env
+          echo "MAILER_USER=${{ secrets.MAILER_USER }}" >> docker.env
+          echo "MAILER_PASSWORD=${{ secrets.MAILER_PASSWORD }}" >> docker.env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> docker.env
+          echo "AUTH_DOMAIN=${{ secrets.AUTH_DOMAIN }}" >> docker.env
+          echo "STORAGE_BUCKET=${{ secrets.STORAGE_BUCKET }}" >> docker.env
+          echo "APP_ID=${{ secrets.APP_ID }}" >> docker.env
+          echo "MESSAGING_SENDER_ID=${{ secrets.MESSAGING_SENDER_ID }}" >> docker.env
+          echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> docker.env
+          echo "MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }}" >> docker.env
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-compose
+          path: |
+            docker.env
+            docker-compose.yml
+
+      - name: set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/streamly:latest
+
+  publish:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: clear app directory
+        run: |
+          touch foo
+          rm -r *
+
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-compose
+
+      - name: pull and run Docker image
+        run: |
+          sudo docker compose down
+          sudo docker image prune -f
+          sudo docker compose pull
+          sudo docker compose up -d
