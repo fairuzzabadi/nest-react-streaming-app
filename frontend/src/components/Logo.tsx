@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { HiOutlinePlay } from "react-icons/hi";
 
 const StyledLogo = styled.span`
   color: ${({ theme }) => theme.colors.logo};

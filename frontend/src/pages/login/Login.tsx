@@ -33,21 +33,21 @@ const Container = styled.div`
   }
 `;
 
-const Image = styled.div`
-  background: url(/images/backgrounds/login-bg.jpg);
-  background-size: cover;
-  background-position: center;
-  flex-grow: 1;
-  min-width: 65%;
+// const Image = styled.div`
+//   background: url(/images/backgrounds/login-bg.jpg);
+//   background-size: cover;
+//   background-position: center;
+//   flex-grow: 1;
+//   min-width: 65%;
 
-  @media (max-width: ${themes.screen.l}) {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-`;
+//   @media (max-width: ${themes.screen.l}) {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//   }
+// `;
 
 const Card = styled.div`
   background: ${({ theme }) => theme.colors.background};

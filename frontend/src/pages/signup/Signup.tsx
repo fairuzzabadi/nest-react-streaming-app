@@ -16,18 +16,18 @@ const errorShowing = keyframes`
   }
 `;
 
-const StyledBackground = styled.div`
-  display: none;
-  height: 120px;
-  background: url("/images/backgrounds/animated-bg.gif");
-  background-size: cover;
-  position: sticky;
-  top: 0;
+// const StyledBackground = styled.div`
+//   display: none;
+//   height: 120px;
+//   background: url("/images/backgrounds/animated-bg.gif");
+//   background-size: cover;
+//   position: sticky;
+//   top: 0;
 
-  @media (max-width: ${themes.screen.s}) {
-    display: block;
-  }
-`;
+//   @media (max-width: ${themes.screen.s}) {
+//     display: block;
+//   }
+// `;
 
 const Container = styled.div`
   @media (min-width: ${themes.screen.l}) {
@@ -128,12 +128,12 @@ const Card = styled.div`
   }
 `;
 
-const Image = styled.div`
-  background: url(/images/backgrounds/signup-bg.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-`;
+// const Image = styled.div`
+//   background: url(/images/backgrounds/signup-bg.jpg);
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// `;
 
 function Signup() {
   const [passwordMismatch, setPasswordMismatch] = useState(false);
