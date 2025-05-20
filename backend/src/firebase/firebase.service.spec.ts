@@ -28,7 +28,7 @@ describe('FirebaseService', () => {
 
     service = module.get<FirebaseService>(FirebaseService);
 
-    const env = await initializeTestEnvironment({ projectId: 'demo-streamly' });
+    const env = await initializeTestEnvironment({ projectId: 'demo-plays' });
     const ctx = env.authenticatedContext('user');
 
     storage = ctx.storage();

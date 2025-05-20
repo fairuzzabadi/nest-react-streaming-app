@@ -248,7 +248,7 @@ export default function Video() {
       .catch((err) => console.error(err));
 
     return () => {
-      document.title = "Streamly";
+      document.title = "Plays";
     };
   }, [video, id]);
 

@@ -10,13 +10,16 @@ const StyledLogo = styled.span`
   svg {
     font-size: 2rem;
   }
+
+  img {
+    width: 110px
+  }
 `;
 
 function Logo() {
   return (
     <StyledLogo>
-      <span>Streamly</span>
-      <HiOutlinePlay />
+      <img src="/images/plays-logo.png"></img>
     </StyledLogo>
   );
 }

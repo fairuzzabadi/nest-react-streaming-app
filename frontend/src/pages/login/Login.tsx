@@ -71,7 +71,7 @@ const Card = styled.div`
   }
 
   h1 {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 0 0.25rem;
   }
 
@@ -198,11 +198,10 @@ function Login() {
 
   return (
     <Container>
-      <Image />
+      {/* <Image /> */}
       <Card>
         <h1>user login</h1>
         <p className="greetings">
-          <span>Welcome to </span>
           <Logo />
         </p>
         <form onSubmit={formOnSubmit}>
@@ -218,7 +217,7 @@ function Login() {
           </p>
           <div className="buttons">
             <Link to="/signup">Not registered ?</Link>
-            <Link to="/forgot-password">Forgot password ?</Link>
+            {/* <Link to="/forgot-password">Forgot password ?</Link> */}
           </div>
           {error.length > 0 && <p className="error">{error}</p>}
           <div className="submit-btn">

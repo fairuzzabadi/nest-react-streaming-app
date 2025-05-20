@@ -17,7 +17,7 @@ export class MailService {
         },
       },
       {
-        from: `Streamly ${configService.get('MAILER_USER')}`,
+        from: `Plays ${configService.get('MAILER_USER')}`,
       },
     );
   }

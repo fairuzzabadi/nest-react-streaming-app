@@ -34,7 +34,7 @@ const Container = styled.div`
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: 60% 40%;
+    // grid-template-columns: 60% 40%;
   }
 `;
 
@@ -194,7 +194,7 @@ function Signup() {
 
   return (
     <Container>
-      <StyledBackground />
+      {/* <StyledBackground /> */}
       <Card>
         <div className="inner">
           <h1>
@@ -242,7 +242,7 @@ function Signup() {
           </form>
         </div>
       </Card>
-      <Image />
+      {/* <Image /> */}
     </Container>
   );
 }

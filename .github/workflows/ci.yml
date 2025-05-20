@@ -61,7 +61,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/streamly:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/plays:latest
 
   publish:
     needs: build
