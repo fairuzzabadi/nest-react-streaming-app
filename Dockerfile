@@ -17,6 +17,7 @@ RUN cd backend && \
   yarn && \
   yarn build
 
+RUN apk add --no-cache openssl1.1-compat
 RUN mkdir -p backend/dist/client
 RUN cp -r frontend/dist/* backend/dist/client
 

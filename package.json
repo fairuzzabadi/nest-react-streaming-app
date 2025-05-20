@@ -3,7 +3,7 @@
     "build_client": "cd frontend && yarn build && cd ..",
     "build_server": "cd backend && yarn build && cd ..",
     "build": "yarn build_client && yarn build_server",
-    "postbuild": "shx mkdir -p backend/dist/client && shx cp -r frontend/dist/* backend/dist/client && cd backend &&",
+    "postbuild": "shx mkdir -p backend/dist/client && shx cp -r frontend/dist/* backend/dist/client && cd backend && npx prisma migrate deploy",
     "dev": "concurrently \"cd backend && yarn start:dev\" \"cd frontend && yarn dev --host\"",
     "start": "cd backend && yarn start:prod",
     "postinstall": "cd frontend && yarn && cd ../backend && yarn"
