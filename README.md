@@ -1,3 +1,5 @@
+ # npx prisma migrate deploy commented in postbuild
+
 [![publish](https://github.com/acf-patrick/Nest-React-Stream-App/actions/workflows/ci.yml/badge.svg)](https://github.com/acf-patrick/Nest-React-Stream-App/actions/workflows/ci.yml)
 
 <p align="center" >
