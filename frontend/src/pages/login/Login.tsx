@@ -200,7 +200,6 @@ function Login() {
     <Container>
       {/* <Image /> */}
       <Card>
-        <h1>user login</h1>
         <p className="greetings">
           <Logo />
         </p>
